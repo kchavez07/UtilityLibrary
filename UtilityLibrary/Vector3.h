@@ -1,5 +1,5 @@
-﻿#pragma once  // Asegura que este archivo solo se incluya una vez en la compilación.
-#include "Prerequisites.h"  // Incluye las dependencias necesarias (como iostream).
+﻿#pragma once 
+#include "Prerequisites.h"  // Incluye las dependencias necesarias.
 
 /**
  * @brief Clase que representa un vector en 3 dimensiones (3D).

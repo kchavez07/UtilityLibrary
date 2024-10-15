@@ -1,13 +1,13 @@
-#pragma once  // Evita que el archivo se incluya varias veces durante la compilación.
-#include "Prerequisites.h"  // Incluye dependencias necesarias, como iostream.
+ï»¿#pragma once  
+#include "Prerequisites.h"  // Incluye dependencias necesarias.
 
 /**
  * @brief Clase que representa un vector en 4 dimensiones (4D).
  *
- * La clase Vector4 permite realizar operaciones comunes de álgebra vectorial
- * en cuatro dimensiones, útiles en computación gráfica para manejar coordenadas
- * homogéneas y transformaciones 3D. Las operaciones incluyen suma, resta,
- * multiplicación por escalar, cálculo de magnitud, normalización y acceso
+ * La clase Vector4 permite realizar operaciones comunes de Ã¡lgebra vectorial
+ * en cuatro dimensiones, Ãºtiles en computaciÃ³n grÃ¡fica para manejar coordenadas
+ * homogÃ©neas y transformaciones 3D. Las operaciones incluyen suma, resta,
+ * multiplicaciÃ³n por escalar, cÃ¡lculo de magnitud, normalizaciÃ³n y acceso
  * directo a los datos.
  */
 class Vector4 {
@@ -60,13 +60,13 @@ public:
     }
 
     /**
-     * @brief Sobrecarga del operador * (multiplicación por un escalar).
+     * @brief Sobrecarga del operador * (multiplicaciÃ³n por un escalar).
      *
      * Multiplica cada componente del vector por un escalar y devuelve
      * un nuevo vector con los resultados.
      *
-     * @param scalar El escalar por el cual se multiplicará el vector.
-     * @return Vector4 El vector resultante de la multiplicación.
+     * @param scalar El escalar por el cual se multiplicarÃ¡ el vector.
+     * @return Vector4 El vector resultante de la multiplicaciÃ³n.
      */
     Vector4 operator*(float scalar) const {
         return Vector4(x * scalar, y * scalar, z * scalar, w * scalar);
@@ -75,9 +75,9 @@ public:
     /**
      * @brief Calcula la magnitud del vector.
      *
-     * La magnitud es la longitud del vector y se calcula como la raíz
+     * La magnitud es la longitud del vector y se calcula como la raÃ­z
      * cuadrada de la suma de los cuadrados de sus componentes:
-     * ?(x² + y² + z² + w²).
+     * âˆš(xÂ² + yÂ² + zÂ² + wÂ²).
      *
      * @return float La magnitud del vector.
      */
@@ -88,7 +88,7 @@ public:
     /**
      * @brief Normaliza el vector.
      *
-     * Devuelve un nuevo vector en la misma dirección, pero con magnitud 1.
+     * Devuelve un nuevo vector en la misma direcciÃ³n, pero con magnitud 1.
      * Si la magnitud del vector es 0, devuelve un vector nulo (0, 0, 0, 0).
      *
      * @return Vector4 El vector normalizado.
