@@ -1,56 +1,119 @@
-#ifndef VECTOR2_H
-#define VECTOR2_H
-#include "Prerequisites.h"
+Ôªø#pragma once  // Asegura que este archivo solo se incluya una vez en la compilaci√≥n.
+#include "Prerequisites.h"  // Incluye las dependencias necesarias (como iostream).
 
-// Clase Vector2 que representa un vector en 2D con coordenadas x e y.
+/**
+ * @brief Clase que representa un vector 2D.
+ *
+ * La clase Vector2 permite realizar operaciones b√°sicas de √°lgebra vectorial
+ * en dos dimensiones, como suma, resta, multiplicaci√≥n por un escalar,
+ * c√°lculo de magnitud, normalizaci√≥n y acceso a sus datos internos.
+ */
 class Vector2 {
 public:
-    float x, y;  // Coordenadas p˙blicas del vector.
+    float x, y;  // Componentes del vector en el eje X y Y.
 
-    // Constructor por defecto que inicializa x e y a 0.
-    Vector2() : x(0), y(0) {}
+    /**
+     * @brief Constructor por defecto.
+     *
+     * Inicializa las componentes del vector en (0, 0).
+     */
+    Vector2() : x(0.0f), y(0.0f) {}
 
-    // Constructor parametrizado que inicializa x e y con valores dados.
+    /**
+     * @brief Constructor parametrizado.
+     *
+     * Inicializa las componentes del vector con los valores proporcionados.
+     *
+     * @param x Valor para la componente X.
+     * @param y Valor para la componente Y.
+     */
     Vector2(float x, float y) : x(x), y(y) {}
 
-    // Sobrecarga del operador + para sumar dos vectores.
+    /**
+     * @brief Sobrecarga del operador + (suma de vectores).
+     *
+     * Permite sumar dos vectores, devolviendo un nuevo vector con la suma
+     * de las componentes correspondientes.
+     *
+     * @param other El vector a sumar.
+     * @return Vector2 Resultado de la suma.
+     */
     Vector2 operator+(const Vector2& other) const {
         return Vector2(x + other.x, y + other.y);
     }
 
-    // Sobrecarga del operador - para restar dos vectores.
+    /**
+     * @brief Sobrecarga del operador - (resta de vectores).
+     *
+     * Permite restar dos vectores, devolviendo un nuevo vector con la resta
+     * de las componentes correspondientes.
+     *
+     * @param other El vector a restar.
+     * @return Vector2 Resultado de la resta.
+     */
     Vector2 operator-(const Vector2& other) const {
         return Vector2(x - other.x, y - other.y);
     }
 
-    // Sobrecarga del operador * para multiplicar el vector por un escalar.
+    /**
+     * @brief Sobrecarga del operador * (multiplicaci√≥n por un escalar).
+     *
+     * Permite multiplicar el vector por un n√∫mero escalar, devolviendo
+     * un nuevo vector con las componentes multiplicadas por dicho escalar.
+     *
+     * @param scalar El escalar por el que se multiplicar√° el vector.
+     * @return Vector2 Resultado de la multiplicaci√≥n.
+     */
     Vector2 operator*(float scalar) const {
         return Vector2(x * scalar, y * scalar);
     }
 
-    // MÈtodo que devuelve la magnitud (longitud) del vector.
+    /**
+     * @brief Calcula la magnitud del vector.
+     *
+     * La magnitud se calcula como la ra√≠z cuadrada de la suma de los
+     * cuadrados de sus componentes: ‚àö(x¬≤ + y¬≤).
+     *
+     * @return float La magnitud del vector.
+     */
     float magnitude() const {
         return std::sqrt(x * x + y * y);
     }
 
-    // MÈtodo que devuelve un vector normalizado (magnitud 1).
+    /**
+     * @brief Normaliza el vector.
+     *
+     * Devuelve un nuevo vector en la misma direcci√≥n que el original,
+     * pero con magnitud 1. Si la magnitud del vector es 0, devuelve
+     * un vector nulo (0, 0).
+     *
+     * @return Vector2 El vector normalizado.
+     */
     Vector2 normalize() const {
         float mag = magnitude();
-        if (mag == 0) {
-            return Vector2(0, 0);  // Si la magnitud es 0, devolver un vector nulo.
+        if (mag == 0.0f) {
+            return Vector2(0.0f, 0.0f);  // Si la magnitud es 0, devuelve un vector nulo.
         }
-        return Vector2(x / mag, y / mag);
+        return *this * (1.0f / mag);  // Devuelve el vector escalado a magnitud 1.
     }
 
-    // MÈtodo que devuelve un puntero a los datos del vector (x, y).
+    /**
+     * @brief Accede a los datos del vector.
+     *
+     * Devuelve un puntero a las componentes del vector (x, y).
+     *
+     * @return const float* Puntero a las componentes del vector.
+     */
     const float* data() const {
-        return &x;  // Devuelve la direcciÛn de x, que est· contigua a y.
+        return &x;
     }
 
-    // FunciÛn para imprimir los valores del vector (˙til para depuraciÛn).
+    /**
+     * @brief Imprime el vector en la consola.
+     *
+     * Muestra las componentes del vector en formato "(x, y)".
+     */
     void print() const {
-        std::cout << "Vector2(" << x << ", " << y << ")" << std::endl;
+        std::cout << "(" << x << ", " << y << ")" << std::endl;
     }
 };
-
-#endif  // VECTOR2_H
